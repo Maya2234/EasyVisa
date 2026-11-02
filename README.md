@@ -12,7 +12,7 @@ A usability-focused redesign of the U.S. Government's **Nonimmigrant Visa Applic
 - Maya Tomarchio
 - Austin Heiss
 - Kene
-- Annalise
+- Annalise Smith
 
 ---
 
