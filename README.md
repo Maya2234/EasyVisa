@@ -32,3 +32,18 @@ A usability-focused redesign of the U.S. Government's **Nonimmigrant Visa Applic
 - **Unclear "OK" button.** The button for returning to the application page just says "OK", and the same label is used for several different links.
 - **Links look like other text.** Links are shown only with italics and underlining, and the browser disclaimer ("This website is designed to be accessed using Chrome, Edge, or Firefox only") uses the same style, so it looks clickable.
 - **No guidance on "Retrieve Application."** Nothing tells users when to use Retrieve Application. Some people will figure it out, but not everyone will.
+
+## Changes in Redesign
+
+Landing page is simplified to include only [start] or [resume] options. The abundance of information initally on the landing page is now broken up into appropriate pages, removed, or condensed as most appropriate.
+
+### AI USE
+AI was used to asist in pieces of the wireframe construction and for asistance becoming familiar with Figma itself. AI was also used to asist in converting the figma wireframe to code. 
+
+### Implementation Tools
+
+### Future Work
+
+
+
+
