@@ -1,4 +1,6 @@
 <script>
+  import { t } from './i18n.svelte.js';
+  import { startNewApplication } from './application.svelte.js';
   // Icons from the Lucide icon library (lucide.dev)
   import ArrowLeft from '@lucide/svelte/icons/arrow-left';
   import ArrowRight from '@lucide/svelte/icons/arrow-right';
@@ -29,28 +31,33 @@
 </script>
 
 <div class="container">
+  <button class="back-link" onclick={() => goTo('terms')}>
+    <ArrowLeft size={18} />
+    {t('common.back')}
+  </button>
+
   <div class="intro-row">
     <div>
-      <h1 class="page-title">Apply For a Nonimmigrant Visa</h1>
-      <p class="page-intro">Complete the location and verification steps below.</p>
+      <h1 class="page-title">{t('common.applyTitle')}</h1>
+      <p class="page-intro">{t('start.intro')}</p>
     </div>
-    <button class="returning" onclick={() => goTo('home')}>
+    <button class="returning" onclick={() => goTo('retrieve')}>
       <FolderOpen size={20} />
-      Returning applicant?
+      {t('start.returning')}
     </button>
   </div>
 
   <section class="card card-accent form-card">
-    <h2 class="card-heading">Start a new application</h2>
+    <h2 class="card-heading">{t('home.startTitle')}</h2>
 
     <div class="steps">
       <div class="step">
-        <label class="step-title" for="location">Select the U.S. embassy or consulate for your visa application.</label>
+        <label class="step-title" for="location">{t('start.locationLabel')}</label>
 
         <div class="select-box">
           <MapPin size={20} />
           <select id="location" bind:value={embassy}>
-            <option value="">Select an embassy or consulate</option>
+            <option value="">{t('start.locationPlaceholder')}</option>
             {#each embassies as place}
               <option value={place}>{place}</option>
             {/each}
@@ -59,7 +66,7 @@
         </div>
 
         <a class="resource-link" href="https://www.usembassy.gov" target="_blank">
-          Find a U.S. embassy or consulate
+          {t('start.findEmbassy')}
           <ArrowUpRight size={16} />
         </a>
       </div>
@@ -67,29 +74,34 @@
       <hr />
 
       <div class="step">
-        <p class="step-title">Complete the security verification</p>
+        <p class="step-title">{t('start.verifyTitle')}</p>
 
         {#if verified}
           <div class="verify-box done">
             <span class="check-circle">
               <Check size={18} color="#2e7d32" />
             </span>
-            Verification Complete
+            {t('start.verifyDone')}
           </div>
         {:else}
           <button class="verify-box" onclick={() => (verified = true)}>
             <span class="empty-square"></span>
-            Verify you are human
+            {t('start.verifyButton')}
           </button>
         {/if}
       </div>
     </div>
 
     <div class="form-actions bottom">
-      <button class="square-button outline-button" onclick={() => goTo('terms')} aria-label="Back">
+      <button class="square-button outline-button" onclick={() => goTo('terms')} aria-label={t('common.back')}>
         <ArrowLeft size={24} />
       </button>
-      <button class="square-button primary-button" disabled={!verified} aria-label="Continue">
+      <button
+        class="square-button primary-button"
+        disabled={!verified || !embassy}
+        onclick={() => { startNewApplication(embassy); goTo('form'); }}
+        aria-label={t('common.continue')}
+      >
         <ArrowRight size={24} />
       </button>
     </div>

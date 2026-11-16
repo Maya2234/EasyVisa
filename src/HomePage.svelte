@@ -1,4 +1,5 @@
 <script>
+  import { t } from './i18n.svelte.js';
   // Icons from the Lucide icon library (lucide.dev)
   import ArrowRight from '@lucide/svelte/icons/arrow-right';
   import ArrowUpRight from '@lucide/svelte/icons/arrow-up-right';
@@ -6,6 +7,10 @@
   import SquareUserRound from '@lucide/svelte/icons/square-user-round';
   import ShieldCheck from '@lucide/svelte/icons/shield-check';
   import FileCheckCorner from '@lucide/svelte/icons/file-check-corner';
+  import KeyRound from '@lucide/svelte/icons/key-round';
+  import UserRound from '@lucide/svelte/icons/user-round';
+  import Calendar from '@lucide/svelte/icons/calendar';
+  import ShieldQuestion from '@lucide/svelte/icons/shield-question-mark';
 
   // goTo lets this page switch to another screen
   let { goTo } = $props();
@@ -13,15 +18,15 @@
 
 <div class="container page">
   <div>
-    <h1 class="page-title">Apply For a Nonimmigrant Visa</h1>
-    <p class="page-intro">Complete Form DS-160 to apply for a U.S. nonimmigrant visa.</p>
+    <h1 class="page-title">{t('common.applyTitle')}</h1>
+    <p class="page-intro">{t('home.intro')}</p>
   </div>
 
   <section class="before">
     <div class="before-heading">
-      <h2>Before you begin</h2>
+      <h2>{t('home.beforeTitle')}</h2>
       <a class="resource-link" href="https://ceac.state.gov/genniv/" target="_blank">
-        Read the full DS-160 instructions
+        {t('home.fullInstructions')}
         <ArrowUpRight size={16} />
       </a>
     </div>
@@ -29,24 +34,24 @@
     <div class="card checklist">
       <div class="checklist-item">
         <div class="item-heading">
-          <NotebookTabs size={24} />
-          <h3>Gather your information</h3>
+          <NotebookTabs size={20} />
+          <h3>{t('home.gatherTitle')}</h3>
         </div>
-        <p>Have your passport, travel plans (if available), and details of previous U.S. travel, education and work ready.</p>
+        <p>{t('home.gatherText')}</p>
       </div>
       <div class="checklist-item">
         <div class="item-heading">
-          <SquareUserRound size={24} />
-          <h3>Prepare a digital photo</h3>
+          <SquareUserRound size={20} />
+          <h3>{t('home.photoTitle')}</h3>
         </div>
-        <p>Review the visa photo requirements before uploading. Your photo must meet the stated format and quality standards.</p>
+        <p>{t('home.photoText')}</p>
       </div>
       <div class="checklist-item">
         <div class="item-heading">
-          <ShieldCheck size={24} />
-          <h3>Keep your access details safe</h3>
+          <ShieldCheck size={20} />
+          <h3>{t('home.safeTitle')}</h3>
         </div>
-        <p>Record your Application ID when it appears. Keep your chosen security question and answer securely so you can return.</p>
+        <p>{t('home.safeText')}</p>
       </div>
     </div>
   </section>
@@ -54,21 +59,31 @@
   <!-- The two option cards, stacked -->
   <div class="options">
     <section class="card option">
-      <h2>Start a new application</h2>
+      <h2>{t('home.startTitle')}</h2>
       <button class="button primary-button" onclick={() => goTo('terms')}>
-        Start an application
+        {t('home.startButton')}
         <ArrowRight size={19} />
       </button>
     </section>
 
     <section class="card option">
       <div>
-        <h2>Already started?</h2>
-        <p class="option-text">Continue a saved application or access an application you have already submitted.</p>
-        <p class="small-text">Have your Application ID ready. You’ll be asked for personal and security details later on.</p>
+        <h2>{t('home.startedTitle')}</h2>
+        <p class="option-text">{t('home.startedText')}</p>
       </div>
-      <button class="button outline-button">
-        Retrieve an application
+
+      <!-- What you'll be asked for, as a tidy list -->
+      <div class="need">
+        <p class="need-title">{t('home.needTitle')}</p>
+        <ul>
+          <li><KeyRound size={17} /> {t('home.needId')}</li>
+          <li><UserRound size={17} /> {t('home.needSurname')}</li>
+          <li><Calendar size={17} /> {t('home.needYear')}</li>
+          <li><ShieldQuestion size={17} /> {t('home.needSecurity')}</li>
+        </ul>
+      </div>
+      <button class="button outline-button" onclick={() => goTo('retrieve')}>
+        {t('home.retrieveButton')}
         <ArrowRight size={19} />
       </button>
     </section>
@@ -78,8 +93,8 @@
   <div class="after-submit">
     <FileCheckCorner size={21} />
     <div>
-      <h3>After you submit your DS-160</h3>
-      <p>Save and print your confirmation page. Follow the instructions from your U.S. embassy or consulate for the next steps in your visa application.</p>
+      <h3>{t('home.afterTitle')}</h3>
+      <p>{t('home.afterText')}</p>
     </div>
   </div>
 </div>
@@ -88,13 +103,13 @@
   .page {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 40px;
   }
 
   .options {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 16px;
   }
 
   .option {
@@ -117,16 +132,50 @@
     line-height: 1.6;
   }
 
-  .small-text {
-    margin-top: 6px;
+  /* "Have these ready" box: light blue, items in two columns */
+  .need {
+    padding: 16px 20px;
+    background: var(--tint);
+    border-radius: 6px;
+  }
+
+  .need-title {
     font-size: 14px;
-    line-height: 1.6;
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+
+  .need ul {
+    margin: 10px 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 24px;
+    font-size: 14px;
+  }
+
+  .need li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .need li :global(svg) {
+    flex-shrink: 0;
+    color: var(--blue);
+  }
+
+  @media (max-width: 700px) {
+    .need ul {
+      grid-template-columns: 1fr;
+    }
   }
 
   .before {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
   }
 
   .before-heading {
@@ -138,7 +187,7 @@
   }
 
   .before-heading h2 {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 600;
     color: var(--heading);
   }
@@ -148,14 +197,14 @@
     padding: 28px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
+    gap: 24px;
   }
 
   .checklist-item {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    padding-inline-end: 28px;
+    gap: 8px;
+    padding-inline-end: 24px;
     border-inline-end: 1px solid var(--border);
   }
 
@@ -172,7 +221,7 @@
 
     .checklist-item {
       padding-inline-end: 0;
-      padding-bottom: 28px;
+      padding-bottom: 20px;
       border-inline-end: none;
       border-bottom: 1px solid var(--border);
     }
@@ -192,15 +241,15 @@
   }
 
   .checklist-item h3 {
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 600;
     line-height: 1.4;
     color: var(--heading);
   }
 
   .checklist-item p {
-    font-size: 14px;
-    line-height: 1.65;
+    font-size: 13.5px;
+    line-height: 1.55;
   }
 
   /* The icon uses the blue; the text below sets its own colors */

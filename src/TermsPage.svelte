@@ -1,4 +1,5 @@
 <script>
+  import { t } from './i18n.svelte.js';
   // Icons from the Lucide icon library (lucide.dev)
   import ArrowLeft from '@lucide/svelte/icons/arrow-left';
   import ArrowRight from '@lucide/svelte/icons/arrow-right';
@@ -11,23 +12,28 @@
 </script>
 
 <div class="container">
-  <h1 class="page-title">Review the terms</h1>
-  <p class="page-intro">Review the information below before continuing. Next, you’ll choose your application location and complete security verification.</p>
+  <button class="back-link" onclick={() => goTo('home')}>
+    <ArrowLeft size={18} />
+    {t('common.back')}
+  </button>
+
+  <h1 class="page-title">{t('terms.title')}</h1>
+  <p class="page-intro">{t('terms.intro')}</p>
 
   <!-- Main card on the left, help panel on the right (stacks on small screens) -->
   <div class="layout">
-    <section class="card card-accent">
-      <h2 class="card-heading">Review before continuing</h2>
+    <section class="card card-accent terms-card">
+      <h2 class="card-heading">{t('terms.cardTitle')}</h2>
 
       <div class="terms">
-        <div class="notice">Computer Fraud and Abuse Act Notices</div>
-        <p>For site management, information is collected for statistical purposes. The Department of State Web Site uses software programs to create summary statistics for such purposes as assessing what information is of most and least interest or identifying system performance or problem areas. The following is the type of information collected about your visit to the web site: the name of the Internet domain from which you access State Department web sites (for example, "aol.com" if you are connecting from America Online) and the date and time you access our site.</p>
-        <p>For site security purposes and to ensure that this service remains available to all users, the State Department uses software programs to monitor network traffic to identify unauthorized attempts to upload or change information or otherwise cause damage. Unauthorized attempts to upload information or change information on this service are strictly prohibited and may be punishable under the Computer Fraud and Abuse Act of 1986. Information also may be used for authorized law enforcement investigations. Except for the above purposes, no other attempts are made to identify individual users or their usage habits.</p>
-        <p>Unauthorized attempts to upload information and/or change information on these web sites are strictly prohibited and are subject to prosecution under the Computer Fraud and Abuse Act of 1986 and Title 18 U.S.C. Sec.1001 and 1030.</p>
-        <p>Furthermore, the Department of State assures that it will not</p>
+        <div class="notice">{t('terms.notice')}</div>
+        <p>{t('terms.p1')}</p>
+        <p>{t('terms.p2')}</p>
+        <p>{t('terms.p3')}</p>
+        <p>{t('terms.p4')}</p>
         <ul>
-          <li>obtain personal identifying information about you through your use of this system, unless you choose to provide such information</li>
-          <li>share any information it receives with any outside parties, except where permitted by Section 222(f) of the Immigration and Nationality Act or, where applicable, the Privacy Act.</li>
+          <li>{t('terms.li1')}</li>
+          <li>{t('terms.li2')}</li>
         </ul>
       </div>
 
@@ -39,18 +45,18 @@
               <Check size={14} color="#2e7d32" strokeWidth={3} />
             {/if}
           </span>
-          I agree to the terms
+          {t('terms.agree')}
         </label>
 
         <div class="form-actions">
-          <button class="square-button outline-button" onclick={() => goTo('home')} aria-label="Back">
+          <button class="square-button outline-button" onclick={() => goTo('home')} aria-label={t('common.back')}>
             <ArrowLeft size={24} />
           </button>
           <button
             class="square-button primary-button"
             disabled={!agreed}
             onclick={() => goTo('start')}
-            aria-label="Continue"
+            aria-label={t('common.continue')}
           >
             <ArrowRight size={24} />
           </button>
@@ -59,12 +65,12 @@
     </section>
 
     <aside class="next-steps">
-      <h3>What happens next?</h3>
-      <p>On the next screen, choose the U.S. embassy or consulate where you will apply and complete the security verification.</p>
+      <h3>{t('terms.nextTitle')}</h3>
+      <p>{t('terms.nextText')}</p>
       <hr />
-      <p>Review the instructions for guidance on completing Form DS-160.</p>
+      <p>{t('terms.nextInstructions')}</p>
       <a class="resource-link" href="https://ceac.state.gov/genniv/" target="_blank">
-        Read the DS-160 instructions
+        {t('common.readInstructions')}
       </a>
     </aside>
   </div>
@@ -113,11 +119,23 @@
     color: var(--heading);
   }
 
+  /* Let the checkbox bar stick to the page (a hidden overflow would stop it) */
+  .terms-card {
+    overflow: visible;
+  }
+
+  /* Checkbox and arrows stay pinned to the bottom of the screen
+     until you scroll past the end of the card */
   .actions {
-    padding: 32px;
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
+    padding: 24px 32px;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
+    background: white;
+    box-shadow: 0 -6px 16px rgba(10, 49, 78, 0.06);
   }
 
   .agree {

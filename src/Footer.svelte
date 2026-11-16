@@ -1,4 +1,5 @@
 <script>
+  import { t } from './i18n.svelte.js';
   // Icons from the Lucide icon library (lucide.dev)
   import ArrowUpRight from '@lucide/svelte/icons/arrow-up-right';
 </script>
@@ -7,8 +8,8 @@
   <div class="wrap">
     <div class="top-row">
       <div>
-        <p class="department">U.S. Department of State</p>
-        <p class="bureau">Bureau of Consular Affairs</p>
+        <p class="department">{t('footer.department')}</p>
+        <p class="bureau">{t('footer.bureau')}</p>
       </div>
 
       <div class="external-links">
@@ -17,7 +18,7 @@
           <ArrowUpRight size={16} />
         </a>
         <a href="https://www.usembassy.gov" target="_blank">
-          U.S. embassies &amp; consulates
+          {t('footer.embassies')}
           <ArrowUpRight size={16} />
         </a>
       </div>
@@ -27,11 +28,11 @@
 
     <div class="bottom-row">
       <div class="policy-links">
-        <a href="#privacy">Privacy</a>
-        <a href="#accessibility">Accessibility</a>
-        <a href="#paperwork">Paperwork Reduction Act</a>
+        <a href="#privacy">{t('footer.privacy')}</a>
+        <a href="#accessibility">{t('footer.accessibility')}</a>
+        <a href="#paperwork">{t('footer.paperwork')}</a>
       </div>
-      <p>Independent design concept · Not an official government website</p>
+      <p>{t('footer.disclaimer')}</p>
     </div>
   </div>
 </footer>

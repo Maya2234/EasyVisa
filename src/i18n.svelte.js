@@ -1,0 +1,362 @@
+// Every piece of text on the site, in English and Spanish.
+// Pages call t('some.key') to get the text in the language picked in the header.
+
+export const languages = [
+  { code: 'en', name: 'English', enabled: true },
+  { code: 'es', name: 'Español', enabled: true },
+  // Shown so people know more are planned, but not available in this prototype
+  { code: 'zh', name: '中文', enabled: false },
+  { code: 'hi', name: 'हिन्दी', enabled: false },
+  { code: 'ar', name: 'العربية', enabled: false },
+  { code: 'pt', name: 'Português', enabled: false },
+  { code: 'fr', name: 'Français', enabled: false },
+  { code: 'vi', name: 'Tiếng Việt', enabled: false },
+  { code: 'ko', name: '한국어', enabled: false }
+];
+
+// The current language. Changing it updates every page straight away.
+export const i18n = $state({ lang: 'en' });
+
+export function setLanguage(code) {
+  i18n.lang = code;
+  document.documentElement.lang = code;
+}
+
+// Look up a piece of text. Some entries are functions that take a value,
+// e.g. t('retrieve.notFound', 'AA00ABCDEF').
+export function t(key, value) {
+  const text = strings[i18n.lang][key] ?? strings.en[key] ?? key;
+  return typeof text === 'function' ? text(value) : text;
+}
+
+const strings = {
+  en: {
+    // Header
+    'header.logoAlt': 'Consular Electronic Application Center, U.S. Department of State',
+    'header.language': 'Language',
+    'header.service': 'DS-160 · Online Nonimmigrant Visa',
+    'header.help': 'Help & FAQs',
+
+    // Footer
+    'footer.department': 'U.S. Department of State',
+    'footer.bureau': 'Bureau of Consular Affairs',
+    'footer.embassies': 'U.S. embassies & consulates',
+    'footer.privacy': 'Privacy',
+    'footer.accessibility': 'Accessibility',
+    'footer.paperwork': 'Paperwork Reduction Act',
+    'footer.disclaimer': 'Independent design concept · Not an official government website',
+
+    // Shared
+    'common.applyTitle': 'Apply For a Nonimmigrant Visa',
+    'common.back': 'Back',
+    'common.continue': 'Continue',
+    'common.readInstructions': 'Read the DS-160 instructions',
+
+    // Home page
+    'home.intro': 'Complete Form DS-160 to apply for a U.S. nonimmigrant visa.',
+    'home.beforeTitle': 'Before you begin',
+    'home.fullInstructions': 'Read the full DS-160 instructions',
+    'home.gatherTitle': 'Gather your information',
+    'home.gatherText': 'Have your passport, travel plans (if available), and details of previous U.S. travel, education and work ready.',
+    'home.photoTitle': 'Prepare a digital photo',
+    'home.photoText': 'Review the visa photo requirements before uploading. Your photo must meet the stated format and quality standards.',
+    'home.safeTitle': 'Keep your access details safe',
+    'home.safeText': 'Record your Application ID when it appears. Keep your chosen security question and answer securely so you can return.',
+    'home.startTitle': 'Start a new application',
+    'home.startButton': 'Start an application',
+    'home.startedTitle': 'Already started?',
+    'home.startedText': 'Continue a saved application or access an application you have already submitted.',
+    'home.startedSmall': 'Have your Application ID ready. You’ll be asked for personal and security details later on.',
+    'home.retrieveButton': 'Retrieve an application',
+    'home.afterTitle': 'After you submit your DS-160',
+    'home.afterText': 'Save and print your confirmation page. Follow the instructions from your U.S. embassy or consulate for the next steps in your visa application.',
+
+    // Terms page
+    'terms.title': 'Review the terms',
+    'terms.intro': 'Review the information below before continuing. Next, you’ll choose your application location and complete security verification.',
+    'terms.cardTitle': 'Review before continuing',
+    'terms.notice': 'Computer Fraud and Abuse Act Notices',
+    'terms.p1': 'For site management, information is collected for statistical purposes. The Department of State Web Site uses software programs to create summary statistics for such purposes as assessing what information is of most and least interest or identifying system performance or problem areas. The following is the type of information collected about your visit to the web site: the name of the Internet domain from which you access State Department web sites (for example, "aol.com" if you are connecting from America Online) and the date and time you access our site.',
+    'terms.p2': 'For site security purposes and to ensure that this service remains available to all users, the State Department uses software programs to monitor network traffic to identify unauthorized attempts to upload or change information or otherwise cause damage. Unauthorized attempts to upload information or change information on this service are strictly prohibited and may be punishable under the Computer Fraud and Abuse Act of 1986. Information also may be used for authorized law enforcement investigations. Except for the above purposes, no other attempts are made to identify individual users or their usage habits.',
+    'terms.p3': 'Unauthorized attempts to upload information and/or change information on these web sites are strictly prohibited and are subject to prosecution under the Computer Fraud and Abuse Act of 1986 and Title 18 U.S.C. Sec.1001 and 1030.',
+    'terms.p4': 'Furthermore, the Department of State assures that it will not',
+    'terms.li1': 'obtain personal identifying information about you through your use of this system, unless you choose to provide such information',
+    'terms.li2': 'share any information it receives with any outside parties, except where permitted by Section 222(f) of the Immigration and Nationality Act or, where applicable, the Privacy Act.',
+    'terms.agree': 'I agree to the terms',
+    'terms.nextTitle': 'What happens next?',
+    'terms.nextText': 'On the next screen, choose the U.S. embassy or consulate where you will apply and complete the security verification.',
+    'terms.nextInstructions': 'Review the instructions for guidance on completing Form DS-160.',
+
+    // Start application page
+    'start.intro': 'Complete the location and verification steps below.',
+    'start.returning': 'Returning applicant?',
+    'start.locationLabel': 'Select the U.S. embassy or consulate for your visa application.',
+    'start.locationPlaceholder': 'Select an embassy or consulate',
+    'start.findEmbassy': 'Find a U.S. embassy or consulate',
+    'start.verifyTitle': 'Complete the security verification',
+    'start.verifyDone': 'Verification Complete',
+    'start.verifyButton': 'Verify you are human',
+
+    // Retrieve application page
+    'retrieve.title': 'Retrieve an application',
+    'retrieve.intro': 'Continue a saved application or view one you have already submitted. Saved applications are kept for 30 days.',
+    'retrieve.cardTitle': 'Enter your Application ID',
+    'retrieve.label': 'Application ID',
+    'retrieve.hint': '10 letters and numbers, shown at the top right of every page of your application.',
+    'retrieve.searching': 'Searching…',
+    'retrieve.notFound': (id) => `We couldn’t find application ${id}`,
+    'retrieve.notFoundText': 'Check that the ID matches your confirmation page exactly. Applications that haven’t been submitted are deleted after 30 days.',
+    'retrieve.startInstead': 'Start a new application instead',
+    'retrieve.nextNote': 'Next, you’ll confirm your identity with the first five letters of your surname, your year of birth and your security question.',
+    'retrieve.continue': 'Continue to your application',
+    'retrieve.helpTitle': 'Can’t find your Application ID?',
+    'retrieve.helpText': 'Look for it on your printed or saved confirmation page, or in the file you saved with “Save Application to File”.',
+    'retrieve.helpLost': 'If you’ve lost your ID and haven’t submitted yet, you’ll need to start a new application.',
+
+    // Home: "Already started?" checklist
+    'home.needTitle': 'Have these ready:',
+    'home.needId': 'Your Application ID',
+    'home.needSurname': 'First five letters of your surname',
+    'home.needYear': 'Your year of birth',
+    'home.needSecurity': 'Your security question answer',
+
+    // Retrieve: demo + identity check
+    'retrieve.demoNote': 'Prototype demo: try the saved application',
+    'retrieve.found': (id) => `Application ${id} found`,
+    'retrieve.foundText': 'Confirm your identity below to open it.',
+    'retrieve.identityTitle': 'Confirm your identity',
+    'retrieve.surnameStart': 'First five letters of surname',
+    'retrieve.birthYear': 'Year of birth',
+    'retrieve.securityQuestion': 'Security question: What is the name of your first pet?',
+
+    // Application form
+    'form.title': 'Your application',
+    'form.introNew': '',
+    'form.introSaved': 'Welcome back. Your saved answers are below. Make any changes, then continue to review.',
+    'form.personal': 'Personal information',
+    'form.passport': 'Passport',
+    'form.travel': 'Travel plans',
+    'form.contact': 'Contact details',
+    'form.surname': 'Surname (family name)',
+    'form.givenNames': 'Given names',
+    'form.fullName': 'Full name',
+    'form.sex': 'Sex',
+    'form.female': 'Female',
+    'form.male': 'Male',
+    'form.birthDate': 'Date of birth',
+    'form.birthPlace': 'Place of birth',
+    'form.birthCity': 'City of birth',
+    'form.birthCountry': 'Country of birth',
+    'form.nationality': 'Nationality',
+    'form.passportNumber': 'Passport number',
+    'form.passportCountry': 'Issuing country',
+    'form.passportIssued': 'Issue date',
+    'form.passportExpires': 'Expiration date',
+    'form.purpose': 'Purpose of trip',
+    'form.purposeB': 'Business or tourism (B1/B2)',
+    'form.purposeF': 'Student (F1)',
+    'form.purposeJ': 'Exchange visitor (J1)',
+    'form.purposeH': 'Temporary worker (H1B)',
+    'form.arrivalDate': 'Planned arrival date',
+    'form.stayDays': 'Length of stay (days)',
+    'form.usAddress': 'Address where you will stay in the U.S.',
+    'form.email': 'Email address',
+    'form.phone': 'Phone number',
+    'form.homeAddress': 'Home address',
+    'form.save': 'Save',
+    'form.saved': 'Saved',
+    'form.saving': 'Saving…',
+    'form.autosaveOn': 'Changes save automatically',
+    'form.continue': 'Continue to review',
+    'form.yourId': 'Application ID',
+    'form.idNewNote': 'Write this down. You’ll need it to come back to your application.',
+    'form.idSavedNote': 'Your answers are saved for 30 days.',
+    'form.lastSaved': (time) => `Saved ${time}`,
+    'form.sections': 'Sections',
+    'form.location': 'Applying at',
+
+    // Review and submit
+    'submit.title': 'Review and submit',
+    'submit.intro': 'Check your answers carefully. You can’t change them after you submit.',
+    'submit.edit': 'Edit',
+    'submit.signTitle': 'Sign and submit',
+    'submit.certify': 'I certify that I have read and understood the questions in this application and that my answers are true and correct to the best of my knowledge.',
+    'submit.submit': 'Submit application',
+    'submit.finePrint': 'Giving false information may make you permanently ineligible for a U.S. visa.',
+    'submit.doneTitle': 'Application submitted',
+    'submit.doneIntro': (email) => `Your DS-160 has been received. A copy of this confirmation was sent to ${email}.`,
+    'submit.confirmationNumber': 'Confirmation number',
+    'submit.submittedOn': 'Submitted on',
+    'submit.nextTitle': 'What happens next',
+    'submit.next1': 'Print or save this confirmation page. You’ll need to bring it to your interview.',
+    'submit.next2': 'Pay the visa application fee.',
+    'submit.next3': 'Schedule your interview with the U.S. embassy or consulate.',
+    'submit.print': 'Print confirmation',
+    'submit.home': 'Return to home'
+  },
+
+  es: {
+    // Header
+    'header.logoAlt': 'Centro Consular de Solicitudes Electrónicas, Departamento de Estado de EE. UU.',
+    'header.language': 'Idioma',
+    'header.service': 'DS-160 · Visa de no inmigrante en línea',
+    'header.help': 'Ayuda y preguntas frecuentes',
+
+    // Footer
+    'footer.department': 'Departamento de Estado de EE. UU.',
+    'footer.bureau': 'Oficina de Asuntos Consulares',
+    'footer.embassies': 'Embajadas y consulados de EE. UU.',
+    'footer.privacy': 'Privacidad',
+    'footer.accessibility': 'Accesibilidad',
+    'footer.paperwork': 'Ley de Reducción de Trámites',
+    'footer.disclaimer': 'Concepto de diseño independiente · No es un sitio web oficial del gobierno',
+
+    // Shared
+    'common.applyTitle': 'Solicite una visa de no inmigrante',
+    'common.back': 'Atrás',
+    'common.continue': 'Continuar',
+    'common.readInstructions': 'Lea las instrucciones del DS-160',
+
+    // Home page
+    'home.intro': 'Complete el formulario DS-160 para solicitar una visa de no inmigrante de EE. UU.',
+    'home.beforeTitle': 'Antes de comenzar',
+    'home.fullInstructions': 'Lea todas las instrucciones del DS-160',
+    'home.gatherTitle': 'Reúna su información',
+    'home.gatherText': 'Tenga a mano su pasaporte, sus planes de viaje (si los tiene) y los datos de sus viajes anteriores a EE. UU., sus estudios y su trabajo.',
+    'home.photoTitle': 'Prepare una foto digital',
+    'home.photoText': 'Revise los requisitos de la foto para la visa antes de subirla. Su foto debe cumplir con el formato y la calidad indicados.',
+    'home.safeTitle': 'Guarde sus datos de acceso',
+    'home.safeText': 'Anote su número de solicitud (Application ID) cuando aparezca. Guarde en un lugar seguro la pregunta y respuesta de seguridad que elija para poder volver.',
+    'home.startTitle': 'Iniciar una nueva solicitud',
+    'home.startButton': 'Iniciar una solicitud',
+    'home.startedTitle': '¿Ya comenzó?',
+    'home.startedText': 'Continúe una solicitud guardada o acceda a una solicitud que ya envió.',
+    'home.startedSmall': 'Tenga a mano su número de solicitud. Más adelante se le pedirán datos personales y de seguridad.',
+    'home.retrieveButton': 'Recuperar una solicitud',
+    'home.afterTitle': 'Después de enviar su DS-160',
+    'home.afterText': 'Guarde e imprima su página de confirmación. Siga las instrucciones de su embajada o consulado de EE. UU. para los próximos pasos de su solicitud de visa.',
+
+    // Terms page
+    'terms.title': 'Revise los términos',
+    'terms.intro': 'Revise la información a continuación antes de continuar. Después, elegirá el lugar de su solicitud y completará la verificación de seguridad.',
+    'terms.cardTitle': 'Revise antes de continuar',
+    'terms.notice': 'Avisos de la Ley de Fraude y Abuso Informático',
+    'terms.p1': 'Para la administración del sitio, se recopila información con fines estadísticos. El sitio web del Departamento de Estado utiliza programas de software para crear estadísticas resumidas con fines como evaluar qué información genera más o menos interés o identificar el rendimiento del sistema o áreas con problemas. Este es el tipo de información que se recopila sobre su visita al sitio web: el nombre del dominio de Internet desde el que accede a los sitios web del Departamento de Estado (por ejemplo, "aol.com" si se conecta desde America Online) y la fecha y hora en que accede a nuestro sitio.',
+    'terms.p2': 'Por motivos de seguridad del sitio y para garantizar que este servicio siga disponible para todos los usuarios, el Departamento de Estado utiliza programas de software para supervisar el tráfico de la red e identificar intentos no autorizados de subir o cambiar información o de causar daños de cualquier otro modo. Los intentos no autorizados de subir o cambiar información en este servicio están estrictamente prohibidos y pueden ser sancionados conforme a la Ley de Fraude y Abuso Informático de 1986. La información también puede utilizarse en investigaciones autorizadas de las fuerzas del orden. Salvo para los fines anteriores, no se intenta identificar a usuarios individuales ni sus hábitos de uso.',
+    'terms.p3': 'Los intentos no autorizados de subir o cambiar información en estos sitios web están estrictamente prohibidos y están sujetos a enjuiciamiento conforme a la Ley de Fraude y Abuso Informático de 1986 y al Título 18 del Código de EE. UU., secciones 1001 y 1030.',
+    'terms.p4': 'Además, el Departamento de Estado garantiza que no',
+    'terms.li1': 'obtendrá información de identificación personal sobre usted a través del uso de este sistema, a menos que usted decida proporcionarla',
+    'terms.li2': 'compartirá la información que reciba con terceros, excepto cuando lo permita la Sección 222(f) de la Ley de Inmigración y Nacionalidad o, cuando corresponda, la Ley de Privacidad.',
+    'terms.agree': 'Acepto los términos',
+    'terms.nextTitle': '¿Qué sigue?',
+    'terms.nextText': 'En la siguiente pantalla, elija la embajada o el consulado de EE. UU. donde presentará su solicitud y complete la verificación de seguridad.',
+    'terms.nextInstructions': 'Consulte las instrucciones para obtener ayuda para completar el formulario DS-160.',
+
+    // Start application page
+    'start.intro': 'Complete los pasos de ubicación y verificación a continuación.',
+    'start.returning': '¿Ya tiene una solicitud?',
+    'start.locationLabel': 'Seleccione la embajada o el consulado de EE. UU. para su solicitud de visa.',
+    'start.locationPlaceholder': 'Seleccione una embajada o un consulado',
+    'start.findEmbassy': 'Buscar una embajada o un consulado de EE. UU.',
+    'start.verifyTitle': 'Complete la verificación de seguridad',
+    'start.verifyDone': 'Verificación completada',
+    'start.verifyButton': 'Verifique que es una persona',
+
+    // Retrieve application page
+    'retrieve.title': 'Recuperar una solicitud',
+    'retrieve.intro': 'Continúe una solicitud guardada o vea una que ya envió. Las solicitudes guardadas se conservan durante 30 días.',
+    'retrieve.cardTitle': 'Ingrese su número de solicitud',
+    'retrieve.label': 'Número de solicitud (Application ID)',
+    'retrieve.hint': '10 letras y números, que aparecen en la parte superior derecha de cada página de su solicitud.',
+    'retrieve.searching': 'Buscando…',
+    'retrieve.notFound': (id) => `No encontramos la solicitud ${id}`,
+    'retrieve.notFoundText': 'Verifique que el número coincida exactamente con su página de confirmación. Las solicitudes que no se han enviado se eliminan después de 30 días.',
+    'retrieve.startInstead': 'Iniciar una nueva solicitud',
+    'retrieve.nextNote': 'A continuación, confirmará su identidad con las primeras cinco letras de su apellido, su año de nacimiento y su pregunta de seguridad.',
+    'retrieve.continue': 'Continuar a su solicitud',
+    'retrieve.helpTitle': '¿No encuentra su número de solicitud?',
+    'retrieve.helpText': 'Búsquelo en su página de confirmación impresa o guardada, o en el archivo que guardó con “Save Application to File”.',
+    'retrieve.helpLost': 'Si perdió su número y aún no ha enviado la solicitud, deberá iniciar una nueva.',
+
+    // Home: "Already started?" checklist
+    'home.needTitle': 'Tenga esto a mano:',
+    'home.needId': 'Su número de solicitud',
+    'home.needSurname': 'Las primeras cinco letras de su apellido',
+    'home.needYear': 'Su año de nacimiento',
+    'home.needSecurity': 'La respuesta a su pregunta de seguridad',
+
+    // Retrieve: demo + identity check
+    'retrieve.demoNote': 'Demostración del prototipo: pruebe la solicitud guardada',
+    'retrieve.found': (id) => `Se encontró la solicitud ${id}`,
+    'retrieve.foundText': 'Confirme su identidad a continuación para abrirla.',
+    'retrieve.identityTitle': 'Confirme su identidad',
+    'retrieve.surnameStart': 'Primeras cinco letras del apellido',
+    'retrieve.birthYear': 'Año de nacimiento',
+    'retrieve.securityQuestion': 'Pregunta de seguridad: ¿Cómo se llamaba su primera mascota?',
+
+    // Application form
+    'form.title': 'Su solicitud',
+    'form.introNew': 'Completamos respuestas de ejemplo para que pruebe el formulario. Cambie lo que quiera y luego continúe a la revisión.',
+    'form.introSaved': 'Bienvenido de nuevo. Sus respuestas guardadas aparecen abajo. Haga los cambios necesarios y luego continúe a la revisión.',
+    'form.personal': 'Información personal',
+    'form.passport': 'Pasaporte',
+    'form.travel': 'Planes de viaje',
+    'form.contact': 'Datos de contacto',
+    'form.surname': 'Apellido(s)',
+    'form.givenNames': 'Nombre(s)',
+    'form.fullName': 'Nombre completo',
+    'form.sex': 'Sexo',
+    'form.female': 'Femenino',
+    'form.male': 'Masculino',
+    'form.birthDate': 'Fecha de nacimiento',
+    'form.birthPlace': 'Lugar de nacimiento',
+    'form.birthCity': 'Ciudad de nacimiento',
+    'form.birthCountry': 'País de nacimiento',
+    'form.nationality': 'Nacionalidad',
+    'form.passportNumber': 'Número de pasaporte',
+    'form.passportCountry': 'País emisor',
+    'form.passportIssued': 'Fecha de emisión',
+    'form.passportExpires': 'Fecha de vencimiento',
+    'form.purpose': 'Motivo del viaje',
+    'form.purposeB': 'Negocios o turismo (B1/B2)',
+    'form.purposeF': 'Estudiante (F1)',
+    'form.purposeJ': 'Visitante de intercambio (J1)',
+    'form.purposeH': 'Trabajador temporal (H1B)',
+    'form.arrivalDate': 'Fecha prevista de llegada',
+    'form.stayDays': 'Duración de la estadía (días)',
+    'form.usAddress': 'Dirección donde se hospedará en EE. UU.',
+    'form.email': 'Correo electrónico',
+    'form.phone': 'Número de teléfono',
+    'form.homeAddress': 'Dirección de domicilio',
+    'form.save': 'Guardar',
+    'form.saved': 'Guardado',
+    'form.saving': 'Guardando…',
+    'form.autosaveOn': 'Los cambios se guardan automáticamente',
+    'form.continue': 'Continuar a la revisión',
+    'form.yourId': 'Número de solicitud',
+    'form.idNewNote': 'Anótelo. Lo necesitará para volver a su solicitud.',
+    'form.idSavedNote': 'Sus respuestas se guardan durante 30 días.',
+    'form.lastSaved': (time) => `Guardado ${time}`,
+    'form.sections': 'Secciones',
+    'form.location': 'Lugar de solicitud',
+
+    // Review and submit
+    'submit.title': 'Revisar y enviar',
+    'submit.intro': 'Revise sus respuestas con cuidado. No podrá cambiarlas después de enviar la solicitud.',
+    'submit.edit': 'Editar',
+    'submit.signTitle': 'Firmar y enviar',
+    'submit.certify': 'Certifico que he leído y entendido las preguntas de esta solicitud y que mis respuestas son verdaderas y correctas según mi leal saber y entender.',
+    'submit.submit': 'Enviar solicitud',
+    'submit.finePrint': 'Dar información falsa puede hacer que no pueda obtener nunca una visa de EE. UU.',
+    'submit.doneTitle': 'Solicitud enviada',
+    'submit.doneIntro': (email) => `Recibimos su DS-160. Enviamos una copia de esta confirmación a ${email}.`,
+    'submit.confirmationNumber': 'Número de confirmación',
+    'submit.submittedOn': 'Fecha de envío',
+    'submit.nextTitle': 'Próximos pasos',
+    'submit.next1': 'Imprima o guarde esta página de confirmación. Deberá llevarla a su entrevista.',
+    'submit.next2': 'Pague la tarifa de solicitud de visa.',
+    'submit.next3': 'Programe su entrevista con la embajada o el consulado de EE. UU.',
+    'submit.print': 'Imprimir confirmación',
+    'submit.home': 'Volver al inicio'
+  }
+};

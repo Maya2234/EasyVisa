@@ -58,9 +58,27 @@ button {
   padding-bottom: 64px;
 }
 
+/* "← Back" link at the top of inner pages */
+.back-link {
+  margin-bottom: 20px;
+  padding: 6px 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--blue);
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
 /* Big page title used on every screen */
 .page-title {
-  font-size: clamp(30px, 5vw, 42px);
+  font-size: clamp(28px, 3.5vw, 38px);
   font-weight: 600;
   line-height: 1.15;
   letter-spacing: -1.3px;
@@ -68,8 +86,8 @@ button {
 }
 
 .page-intro {
-  margin-top: 16px;
-  font-size: 17px;
+  margin-top: 12px;
+  font-size: 16px;
   line-height: 1.6;
   max-width: 70ch;
 }

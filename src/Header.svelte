@@ -1,24 +1,29 @@
 <script>
+  import { t, i18n, languages, setLanguage } from './i18n.svelte.js';
   // Icons from the Lucide icon library (lucide.dev)
   import Languages from '@lucide/svelte/icons/languages';
   import ChevronDown from '@lucide/svelte/icons/chevron-down';
   import CircleQuestionMark from '@lucide/svelte/icons/circle-question-mark';
 
-  // The language dropdown is only for show: picking an option does nothing.
-  const languages = ['English', 'Español', '中文', 'हिन्दी', 'العربية', 'Português', 'Français', 'Tiếng Việt', '한국어'];
+  // English and Spanish work; the rest are listed but greyed out for now.
+  function changeLanguage(event) {
+    setLanguage(event.target.value);
+  }
 </script>
 
 <header>
   <div class="top-bar">
     <div class="wrap top-inner">
-      <img class="logo" src="images/badge-title.png" alt="Consular Electronic Application Center, U.S. Department of State" />
+      <img class="logo" src="images/badge-title.png" alt={t('header.logoAlt')} />
 
       <!-- Language picker: a real dropdown with the icons drawn on top -->
       <label class="language-picker">
         <Languages size={20} />
-        <select aria-label="Language">
-          {#each languages as name}
-            <option>{name}</option>
+        <select aria-label={t('header.language')} value={i18n.lang} onchange={changeLanguage}>
+          {#each languages as language}
+            <option value={language.code} disabled={!language.enabled}>
+              {language.name}
+            </option>
           {/each}
         </select>
         <ChevronDown size={16} />
@@ -28,11 +33,11 @@
 
   <nav>
     <div class="wrap nav-inner">
-      <span class="current-service">DS-160 · Online Nonimmigrant Visa</span>
+      <span class="current-service">{t('header.service')}</span>
 
       <a href="#help" class="help-link">
         <CircleQuestionMark size={18} />
-        Help &amp; FAQs
+        {t('header.help')}
       </a>
     </div>
   </nav>
@@ -41,7 +46,7 @@
 <style>
   .top-bar {
     background: var(--navy);
-    padding: 40px 0;
+    padding: 32px 0;
   }
 
   .top-inner {
@@ -53,7 +58,7 @@
   }
 
   .logo {
-    width: 760px;
+    width: 560px;
     max-width: 100%;
     height: auto;
   }
@@ -84,12 +89,16 @@
     color: black;
   }
 
+  .language-picker option:disabled {
+    color: #8797a1;
+  }
+
   nav {
     border-bottom: 1px solid var(--border);
   }
 
   .nav-inner {
-    min-height: 54px;
+    min-height: 56px;
     display: flex;
     align-items: center;
     justify-content: space-between;
