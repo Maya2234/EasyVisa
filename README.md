@@ -155,11 +155,39 @@ Combining the critique, the observational study and the survey, we focused the r
 
 ## Sketches, Wireframes & Feedback
 
-We planned the redesign in Figma, starting from low-fidelity wireframes of the landing page and the pages the old landing-page content was moved to.
+We did our initial planning for the redesign in Figma ([view the Figma file](https://www.figma.com/design/uFSguu9zazmVgmcBmS8OFR/UI-Project-2-Easy-Visa)), working at desktop width (about 1440 px) so the layout uses the whole screen instead of the original's narrow column. Every screen shares one header and footer. The header has a page-level language selector and two persistent links, **Before you begin** and **Help & FAQs**. The footer gathers the outside links (Travel.State.Gov, U.S. embassies & consulates) and labels the project as an independent design concept, not an official government website.
 
-[ADD SCREENSHOTS: hand sketches and/or Figma wireframes, with a one-line caption under each]
+The wireframes cover the path from the landing page to the start of the form. We also reordered that path: the original site asks for location and the CAPTCHA first and shows the legal notice afterwards, while EasyVisa shows the terms first and then asks for location and verification together.
 
-**Feedback on the design plans.** [ADD: how you gathered feedback before building (e.g. showing the Figma wireframes to classmates or study participants), what they said, and anything you changed as a result]
+### 1. Landing page
+
+![EasyVisa landing page wireframe](figma_images/01-home.png)
+
+The landing page is reduced to one decision: **Start a new application** (a solid primary button) or **Already started?** (an outlined Retrieve button). The Retrieve card explains in one line when to use it ("Continue a saved application or access an application you have already submitted") and reminds users to have their Application ID ready. This answers the critique that nothing explained Retrieve Application, and Participant 3's long hesitation before the first click.
+
+Below the two choices, a **Before you begin** section replaces the old paragraphs with three short, icon-led cards: *Gather your information*, *Prepare a digital photo*, and *Keep your access details safe*. The third card says up front that the Application ID and security answer matter, which none of our participants understood on the original site. A single, clearly styled **Read the full DS-160 instructions** link replaces the hard-to-find instructions link. This layout follows Participant 1's request for short, visual points instead of paragraphs, and the survey's strongest finding (9 of 10 respondents felt overwhelmed).
+
+### 2. Review the terms
+
+![Review the terms wireframe](figma_images/02-review-terms.png)
+
+![Review the terms with the box checked and Next enabled](figma_images/03-review-terms-accepted.png)
+
+The Computer Fraud and Abuse Act notice now sits in its own scrollable panel under a plain heading, **Review before continuing**, so the legal text no longer pushes the agreement checkbox to the bottom of a long page. The **I agree to the terms** checkbox sits directly below the panel, and the Next arrow stays greyed out until it is checked (second image), so users can't skip the step or be left wondering why nothing happened. A side panel titled **What happens next?** tells users the next screen will ask for their embassy or consulate and a security check, and links to the instructions. This responds to Participant 2's confusion about why the notice was there at all.
+
+### 3. Start a new application
+
+![Start application wireframe](figma_images/04-start-application.png)
+
+![Start application with verification complete and Next enabled](figma_images/05-start-application-verified.png)
+
+Location and verification are now two clearly numbered steps in one card:
+
+- **Location:** the question is reworded in plain language ("Select the U.S. embassy or consulate for your visa application"), which addresses Participant 3's concern about non-native English speakers. A **Find a U.S. embassy or consulate** link sits right under the field for users who don't know which one to choose.
+- **Verification:** the distorted-text CAPTCHA, which every study participant failed at least once, is replaced by a single **Verify you are human** checkbox. Once it's done, the box changes to *Verification Complete* with a check mark (second image).
+- **Navigation:** Back and Next buttons replace the original's separate Start and Retrieve buttons, and Next only activates when both steps are complete. A **Returning applicant?** link keeps the way back to Retrieve visible without competing with the main task.
+
+Because nothing is inserted above the buttons mid-task (as the original's photo notice and error box were), the layout stays stable while the user works.
 
 ## The EasyVisa Redesign
 
@@ -201,7 +229,8 @@ AI was used to assist in parts of the wireframe construction and to help us beco
 
 No project is ever fully done. Based on our research, these are the next steps we would take:
 
-- **Redesign the rest of the DS-160 flow.** Our prototype focuses on the entry experience. The pages after it — the Computer Fraud and Abuse Act notice, the Application ID and security question page, and the form sections themselves — share the same dense layout and would benefit from the same treatment (for example, a short plain-language summary of the legal notice with the full text expandable).
+- **Finish the Application Information page.** The Figma frame for the Application ID and security question page is still a placeholder copy of the terms layout. The next step is to give the Application ID its own prominent, impossible-to-miss treatment, with a clear explanation of what it's for and a one-click way to save or print it.
+- **Redesign the rest of the DS-160 flow.** Our prototype focuses on the entry experience until you reach the actual application page. While the application itself looks slightly better, it still could use a redesign as it only takes up half the page.
 - **Rethink the CAPTCHA step.** Every study participant failed it at least once. A clearer required-field indicator, inline validation, or a less error-prone verification method would remove one of the most common errors we observed.
 - **Full language support.** The current site only translates hover tooltips. Since many DS-160 applicants are non-native English speakers, a true page-level language option would be a meaningful improvement.
 - **Clearer connections to related sites.** Better signposting between the DS-160, travel.state.gov and the separate interview-scheduling portal, so users always know which site they're on and what it's for.
@@ -209,4 +238,5 @@ No project is ever fully done. Based on our research, these are the next steps w
 
 ## Demo Video
 
+[EMBED OR LINK 2–3 MINUTE DEMO VIDEO — include project name, team members, project components and a walkthrough of the interface]
 [EMBED OR LINK 2–3 MINUTE DEMO VIDEO — include project name, team members, project components and a walkthrough of the interface]
