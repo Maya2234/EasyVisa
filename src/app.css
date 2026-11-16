@@ -41,6 +41,11 @@ button {
   cursor: pointer;
 }
 
+/* Lucide icons keep their size instead of getting squeezed next to text */
+.lucide-icon {
+  flex-shrink: 0;
+}
+
 /* Page content: uses most of the screen, with side padding that
    grows with the window (16px on phones, up to 96px on big screens).
    It only stops growing on very wide monitors. */

@@ -8,6 +8,7 @@
   import Check from '@lucide/svelte/icons/check';
   import ChevronDown from '@lucide/svelte/icons/chevron-down';
   import FolderOpen from '@lucide/svelte/icons/folder-open';
+  import Info from '@lucide/svelte/icons/info';
   import MapPin from '@lucide/svelte/icons/map-pin';
 
   let { goTo } = $props();
@@ -17,6 +18,9 @@
 
   // true once the person clicks the "Verify you are human" box
   let verified = $state(false);
+
+  // true while the "Returning applicant?" warning is showing
+  let showReturningAlert = $state(false);
 
   const embassies = [
     'Bogotá, Colombia',
@@ -41,11 +45,30 @@
       <h1 class="page-title">{t('common.applyTitle')}</h1>
       <p class="page-intro">{t('start.intro')}</p>
     </div>
-    <button class="returning" onclick={() => goTo('retrieve')}>
+    <button class="returning" onclick={() => (showReturningAlert = true)}>
       <FolderOpen size={20} />
       {t('start.returning')}
     </button>
   </div>
+
+  <!-- Shown after clicking "Returning applicant?" -->
+  {#if showReturningAlert}
+    <div class="returning-alert" role="alert">
+      <Info size={22} />
+      <div class="alert-body">
+        <p class="alert-title">{t('start.returningAlertTitle')}</p>
+        <p>{t('start.returningAlertText')}</p>
+        <div class="alert-buttons">
+          <button class="button primary-button" onclick={() => goTo('retrieve')}>
+            {t('start.returningAlertGo')}
+          </button>
+          <button class="button outline-button" onclick={() => (showReturningAlert = false)}>
+            {t('start.returningAlertStay')}
+          </button>
+        </div>
+      </div>
+    </div>
+  {/if}
 
   <section class="card card-accent form-card">
     <h2 class="card-heading">{t('home.startTitle')}</h2>
@@ -134,6 +157,39 @@
     margin-top: 24px;
   }
 
+  /* Light blue warning box with a blue line on the left */
+  .returning-alert {
+    margin-top: 24px;
+    padding: 20px 24px;
+    display: flex;
+    gap: 14px;
+    background: var(--tint);
+    border-inline-start: 4px solid var(--blue);
+    color: var(--blue);
+  }
+
+  .alert-body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text);
+  }
+
+  .alert-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--heading);
+  }
+
+  .alert-buttons {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
   .steps {
     padding: 32px;
     display: flex;
@@ -180,7 +236,6 @@
   }
 
   .resource-link {
-    margin-top: -8px;
     align-self: flex-start;
   }
 

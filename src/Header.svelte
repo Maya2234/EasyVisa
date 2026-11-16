@@ -35,7 +35,7 @@
     <div class="wrap nav-inner">
       <span class="current-service">{t('header.service')}</span>
 
-      <a href="#help" class="help-link">
+      <a href="https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/forms/ds-160-online-nonimmigrant-visa-application/ds-160-faqs.html" target="_blank" class="help-link">
         <CircleQuestionMark size={18} />
         {t('header.help')}
       </a>
