@@ -81,9 +81,9 @@ We also performed our own critique of the site's layout, instructions and naviga
 
 *3. A participant got completely lost outside the application.* After the CAPTCHA errors, Participant 2 ended up on an "Error: There was an error processing the request" page with no way back except the browser. From there they went to a travel.state.gov 404 page, then the general U.S. Visas page, then the U.S. Consulate Sydney page, then **usvisascheduling.com** (a Cloudflare bot check), and finally the *Apply for a U.S. Visa* login portal, which is a different system for scheduling interviews. Only after this detour did they return to ceac.state.gov and restart with a new location. This shows how easily the DS-160 can be confused with the other visa sites it links to.
 
-*4. The location dropdown is long and unsearchable.* The "Select a location where you will be applying for this visa" dropdown is a single alphabetical list of every embassy and consulate in "COUNTRY, CITY" format. Participant 2 scrolled through dozens of entries (Lithuania… Mexico… Uruguay) before choosing.
+*4. The location dropdown is long, and its search shortcut is invisible.* The "Select a location where you will be applying for this visa" dropdown is a single alphabetical list of every embassy and consulate in "COUNTRY, CITY" format. Participant 2 scrolled through dozens of entries (Lithuania… Mexico… Uruguay) before choosing. Participant 1 found they could type "GER" to jump to Germany and called it the one thing they liked, so typing to search helps, but only users who already know it exists.
 
-*5. Long hesitation before the first action.* Participant 3 spent well over a minute on the landing page without clicking anything, moving the cursor around the Welcome and Get Started text, before making a selection. [ADD what they said here from the think-aloud, e.g. "I don't know where I'm supposed to start"]
+*5. Reading the landing page takes a long time.* Participant 3 spent well over a minute on the landing page without clicking anything before making a selection. In the interview they explained that they had read the whole homepage, so the page's volume of text costs time even for users who do read it.
 
 *6. The page shifts and hides controls.* Choosing a location inserts a new photo notice above the Start/Retrieve buttons, pushing them down the page. Combined with the error box appearing after a failed CAPTCHA, the layout moves several times while the user is trying to act.
 
@@ -93,13 +93,18 @@ We also performed our own critique of the site's layout, instructions and naviga
 
 ### Post-Task Interviews
 
-After the tasks, each participant answered a short set of follow-up questions. [ADD the questions you asked]
+After the tasks, we asked each participant open follow-up questions about the site's look, how much they read, what confused them and anything they liked. The recordings were transcribed and are summarized below.
 
-- **Participant 1:** [ADD summary + one short quote from New Recording 10]
-- **Participant 2:** [ADD summary + one short quote from New Recording 11]
-- **Participant 3:** [ADD summary + one short quote from New Recording 12]
+- **Participant 1 (Recording 10):** Disliked the color scheme: red and maroon draw the eye to unimportant things like the translation banner and "Welcome." Found the CAPTCHA on the same page confusing and wished it were a separate pop-up. Felt there was no clear path, and wanted the "before you start" steps to be separate, sequential pages instead of everything on one page; also wanted the site to fill the screen on a laptop. Read almost none of the text, only Get Started and the start/retrieve panel, because "it's in paragraph form, and I'm very bullet point slash like visual person." Said the dark text on dark blue in the Start box was hard to see, and treated it as an optional guideline. Copied the Application ID without knowing what it was for, and set a security question without knowing why. The one thing they liked was the location dropdown, where typing "GER" jumped straight to Germany.
+- **Participant 2 (Recording 11):** Found the site poorly organized: "my eyes don't know where to jump to." Said it sent them to a random site and the Start button wasn't working, which matches the error page and detour in their session. Was so overwhelmed they skipped all reading and went straight to wherever it asked them to type. Main complaints were that it's not easy to navigate and has too much information. On the positive side, once they reached the actual form (surname, given name), it felt self-explanatory. Didn't know what the Computer Fraud and Abuse Act had to do with a visa, and never saw the instruction to record their Application ID; their eyes went straight to the security question.
+- **Participant 3 (Recording 12):** The most positive participant, and the only one who read the landing page in full. Found it official-looking and not overwhelming, and liked the time estimate, the concise hyperlinked "before you start" list, the help notes and the progress indicators inside the form. Still flagged several problems: the CAPTCHA felt outdated; the "select a location" wording could confuse non-native English speakers; and the note to write down the Application ID, placed under "Additional Information," read as optional ("it's just like, oh, by the way"). Suggested that truly important notes be highlighted or shown in a pop-up before the application starts. Liked having the legal notice and security question together because it signaled that the content mattered.
 
-**Common themes:** [ADD 2–3 themes that came up across interviews, e.g. overwhelmed by text, unsure which button to press, didn't trust that they were on the right site]
+**Common themes**
+
+- **Most people don't read the text.** Two of three participants skipped nearly everything and jumped to the first thing that looked like an action. Long paragraphs and low-contrast text were treated as optional.
+- **Critical information doesn't look critical.** None of the three understood why the Application ID mattered: Participant 1 copied it without knowing why, Participant 2 never saw it, and Participant 3 saw it but took it as an aside because it sat under "Additional Information."
+- **There's no clear path.** Participants wanted a step-by-step flow rather than everything on one page, and the CAPTCHA confused or annoyed all three.
+- **Not everyone is overwhelmed.** Participant 3, a careful reader, found the amount of text manageable. The redesign should simplify the page without removing information careful readers rely on.
 
 ### Survey Results
 
@@ -135,15 +140,15 @@ We collected **10 responses** to our 14-item "Visa Application Ease of Use Surve
 
 ## Design Goals
 
-Combining the critique, the observational study, and the survey, we focused the redesign on these goals:
+Combining the critique, the observational study and the survey, we focused the redesign on these goals:
 
 | Goal | Evidence |
 |---|---|
 | **Reduce what's on the landing page to one clear decision: start or resume.** | 9/10 overwhelmed; 8/10 found it unnecessarily complex; Participant 3's long hesitation |
 | **Explain *Start* vs *Retrieve* in plain language** so users know which to choose. | No guidance on Retrieve Application in current UI; participants unsure where to begin |
-| **Bring the "before you start" information forward** (documents needed, save your Application ID, 20-minute timeout) instead of burying it at the bottom. | Key info sits below the fold; participants left the site to find document requirements |
+| **Bring the "before you start" information forward** (documents needed, save your Application ID, 20-minute timeout) instead of burying it at the bottom. | Key info sits below the fold; participants left the site to find document requirements; none of the 3 understood why the Application ID mattered |
 | **Link help directly to the relevant answer,** not the general FAQ. | Participants 1 and 3 had to scan the full FAQ to find documents |
-| **Make the location picker searchable.** | Participant 2 scrolled through dozens of entries |
+| **Make the location picker visibly searchable.** | Participant 2 scrolled through dozens of entries; Participant 1 liked typing to jump to a country but found it by accident |
 | **Make required fields and errors obvious before submission,** and keep the layout stable. | All 3 participants triggered the CAPTCHA error; buttons moved as notices appeared |
 | **Keep users inside the DS-160 flow** and make clear which site they're on. | Participant 2 ended up on an error page, a 404 and the separate scheduling portal |
 | **Use the full screen, larger text and a clear visual hierarchy,** with links that look like links and buttons with descriptive labels. | 6/10 couldn't read all text easily; 9/10 found the site unattractive; italic-underline links and generic "OK" buttons |
@@ -205,12 +210,8 @@ No project is ever fully done. Based on our research, these are the next steps w
 - **Full language support.** The current site only translates hover tooltips. Since many DS-160 applicants are non-native English speakers, a true page-level language option would be a meaningful improvement.
 - **Clearer connections to related sites.** Better signposting between the DS-160, travel.state.gov and the separate interview-scheduling portal, so users always know which site they're on and what it's for.
 - **Evaluate the redesign.** Run the same three tasks and the same survey with new participants on EasyVisa and compare errors, completion and self-reported scores against the original site.
+- [ADD anything you started but couldn't finish, with screenshots]
 
 ## Demo Video
 
 [EMBED OR LINK 2–3 MINUTE DEMO VIDEO — include project name, team members, project components and a walkthrough of the interface]
-
-
-
-
-
