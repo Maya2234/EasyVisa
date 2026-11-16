@@ -11,7 +11,7 @@
 <header>
   <div class="top-bar">
     <div class="wrap top-inner">
-      <img class="logo" src="/images/badge-title.png" alt="Consular Electronic Application Center, U.S. Department of State" />
+      <img class="logo" src="images/badge-title.png" alt="Consular Electronic Application Center, U.S. Department of State" />
 
       <!-- Language picker: a real dropdown with the icons drawn on top -->
       <label class="language-picker">
