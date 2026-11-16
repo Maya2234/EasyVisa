@@ -20,7 +20,7 @@ The DS-160 is the online form almost everyone applying for a temporary U.S. visa
 
 Despite that, the entry point to the application (the Consular Electronic Application Center landing page) is dense, text-heavy and difficult to navigate. Important instructions are hidden behind unrelated-looking links, the page does not use the full browser width, and the controls needed to start or resume an application are surrounded by legal notices and small print.
 
-We classify this as a **Category A redesign**: the current UI has significant usability and design-principle problems (learnability, layout, text hierarchy, link affordances and error handling) rather than a flawed underlying goal. Our aim with EasyVisa was to keep the same purpose — getting an applicant started on the DS-160 correctly — while making the path there clear, readable and hard to get wrong.
+We classify this as a **Category A redesign**: the current UI has significant usability and design-principle problems (learnability, layout, text hierarchy, link affordances and error handling) rather than a flawed underlying goal. Our aim with EasyVisa was to keep the same purpose of getting an applicant started on the DS-160 correctly while making the path there clear, readable and hard to get wrong.
 
 ## Research Methods
 
@@ -182,10 +182,6 @@ We planned the redesign in Figma, starting from low-fidelity wireframes of the l
 2. **[Next page]** – [screenshot] [description]
 3. **[Next page]** – [screenshot] [description]
 
-### Before & After
-
-[OPTIONAL BUT RECOMMENDED: side-by-side screenshots of the original landing page and the EasyVisa landing page]
-
 ## Implementation
 
 The prototype is a front-end-only web application built with **Svelte / SvelteKit** and JavaScript, with no backend or database; form data is not submitted anywhere.
@@ -210,7 +206,6 @@ No project is ever fully done. Based on our research, these are the next steps w
 - **Full language support.** The current site only translates hover tooltips. Since many DS-160 applicants are non-native English speakers, a true page-level language option would be a meaningful improvement.
 - **Clearer connections to related sites.** Better signposting between the DS-160, travel.state.gov and the separate interview-scheduling portal, so users always know which site they're on and what it's for.
 - **Evaluate the redesign.** Run the same three tasks and the same survey with new participants on EasyVisa and compare errors, completion and self-reported scores against the original site.
-- [ADD anything you started but couldn't finish, with screenshots]
 
 ## Demo Video
 
