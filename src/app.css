@@ -1,0 +1,166 @@
+/* Global styles shared by every screen.
+   Colors come straight from the Figma file. */
+:root {
+  --navy: #0a314e;       /* header + footer background */
+  --blue: #245b83;       /* buttons, links, accents */
+  --heading: #16344b;    /* big titles */
+  --text-dark: #192d3b;  /* labels */
+  --text: #53616b;       /* body copy */
+  --border: #d5dddf;
+  --page-bg: #f8f8f5;
+  --tint: #eef3f6;       /* light blue boxes */
+
+  --font: 'Inter', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--page-bg);
+  font-family: var(--font);
+  color: var(--text);
+}
+
+h1, h2, h3, p {
+  margin: 0;
+}
+
+a {
+  color: var(--blue);
+}
+
+button,
+select {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Page content: uses most of the screen, with side padding that
+   grows with the window (16px on phones, up to 96px on big screens).
+   It only stops growing on very wide monitors. */
+.container,
+.wrap {
+  width: 100%;
+  max-width: 1680px;
+  margin: 0 auto;
+  padding-left: clamp(16px, 5vw, 96px);
+  padding-right: clamp(16px, 5vw, 96px);
+}
+
+.container {
+  padding-top: 48px;
+  padding-bottom: 64px;
+}
+
+/* Big page title used on every screen */
+.page-title {
+  font-size: clamp(30px, 5vw, 42px);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -1.3px;
+  color: var(--heading);
+}
+
+.page-intro {
+  margin-top: 16px;
+  font-size: 17px;
+  line-height: 1.6;
+  max-width: 70ch;
+}
+
+/* White card with a gray border */
+.card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Form cards: a thin blue bar on top and square corners */
+.card-accent {
+  border-top: 4px solid var(--blue);
+  border-radius: 0;
+}
+
+.card-heading {
+  padding: 27px 32px 24px;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--heading);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Underlined link with a little arrow icon */
+.resource-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* Thin gray divider line */
+hr {
+  width: 100%;
+  height: 1px;
+  margin: 0;
+  border: none;
+  background: var(--border);
+}
+
+/* Buttons. Pick a shape (.button or .square-button)
+   and a color (.primary-button or .outline-button). */
+.button {
+  min-height: 52px;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.primary-button {
+  background: var(--blue);
+  border: 1px solid var(--blue);
+  color: white;
+}
+
+.primary-button:disabled {
+  background: #e3e8eb;
+  border-color: #e3e8eb;
+  color: #8797a1;
+  cursor: not-allowed;
+}
+
+.outline-button {
+  background: white;
+  border: 1px solid var(--blue);
+  color: var(--blue);
+}
+
+/* Back / Next square buttons */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 40px;
+}
+
+.square-button {
+  width: 66px;
+  height: 52px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
