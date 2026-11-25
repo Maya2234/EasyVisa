@@ -4,7 +4,7 @@
 
 Original site: [ceac.state.gov/GenNIV/Default.aspx](https://ceac.state.gov/GenNIV/Default.aspx)
 
-**Live prototype:** [ADD HOSTED LINK] · **Source code:** https://github.com/Maya2234/EasyVisa/tree/main/src · **Demo video:** [ADD VIDEO LINK]
+**Live prototype:** [maya2234.github.io/EasyVisa](https://maya2234.github.io/EasyVisa/) · **Source code:** [github.com/Maya2234/EasyVisa](https://github.com/Maya2234/EasyVisa) · **Demo video:** [EasyVisa Demo Video](https://mailuc-my.sharepoint.com/:v:/g/personal/brogeeld_mail_uc_edu/IQCtfN_dRLRbS7W8ME3y0eP8AQnG3Jh6cO9eTMZdWGQp_hg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=gTPBDp)
 
 ## Team
 
@@ -193,33 +193,103 @@ Because nothing is inserted above the buttons mid-task (as the original's photo 
 
 ### Changes in the Redesign
 
-**Simplified landing page.** The landing page now offers only two choices: **Start** a new application or **Resume** an existing one. The large amount of information that used to sit on the landing page has been broken out into appropriate pages, removed, or condensed, whichever fit each piece of content best.
+Each change below responds to a specific finding from our critique, observational study, interviews or survey.
 
-[ADD each other change you implemented, in the same pattern: **Name of change.** What it does, and which finding it addresses. For example:]
-
-- [**Before-you-start page.** …]
-- [**Searchable location selection.** …]
-- [**Clearer help and instructions.** …]
-- [**Descriptive buttons and visible links.** …]
+- **One clear decision on the landing page.** The landing page now offers only two paths: **Start a new application** or **Already started?** → **Retrieve an application**. The Retrieve card says exactly when to use it and lists what you'll need (Application ID, first five letters of your surname, year of birth, security answer). *Addresses:* no guidance on Retrieve Application; 9/10 survey respondents overwhelmed; Participant 3's long hesitation.
+- **Short "Before you begin" checklist instead of paragraphs.** Three icon-led items (*Gather your information*, *Prepare a digital photo*, *Keep your access details safe*) replace the dense Welcome, Notes and Additional Information text. *Addresses:* Participant 1 reading none of the paragraphs ("I'm very bullet point slash like visual person").
+- **Document requirements one click away.** An ⓘ button next to *Gather your information* opens a **What to have ready** pop-up listing the required documents, including extra items for students, exchange visitors and temporary workers. The pop-up closes with ✕, Escape or a click outside. *Addresses:* "Gather your documents" sending users to the general FAQ (Participants 1 and 3).
+- **Direct, clearly styled links.** The photo tip links straight to the visa photo requirements, the instructions link is labelled **Read the full DS-160 instructions**, and outside links carry an ↗ arrow so it's obvious they open another site. *Addresses:* links that looked like plain text; users getting lost on other State Department sites (Participant 2).
+- **Terms before the application, with a gated Next button.** The Computer Fraud and Abuse Act notice sits in its own scrollable card with the **I agree to the terms** checkbox directly beneath it. The Next arrow stays disabled until the box is ticked, and a **What happens next?** panel explains the next step. *Addresses:* the legal page burying the checkbox; Participant 2 not knowing why the notice was there.
+- **Plain-language location step.** The location question is reworded as "Select your visa interview/processing location (U.S. Embassy or Consulate)", with a **Find a U.S. embassy or consulate** link underneath. *Addresses:* Participant 3's concern about wording for non-native English speakers.
+- **One-click verification instead of a distorted-text CAPTCHA.** A **Verify you are human** box turns into *Verification Complete* when clicked, and Next only unlocks once a location is chosen and verification is done. *Addresses:* every participant failing the original CAPTCHA at least once.
+- **A safety net for returning applicants.** A **Returning applicant?** link on the start page opens an inline message ("Leave this new application?") with **Go to returning applicant** and **Stay on this page**, so nobody loses their place by accident.
+- **A forgiving Retrieve page.** The Application ID box upper-cases as you type, removes spaces and dashes, shows a 10-character counter and searches automatically when the ID is complete. Not-found errors say exactly what to check and offer **Start a new application instead**, and a side panel answers "Can't find your Application ID?". *Addresses:* the error page and dead end Participant 2 hit.
+- **The Application ID you can't miss.** On the form page, the Application ID sits in its own highlighted box with the instruction "Write this down. You'll need it to come back to your application." *Addresses:* none of the three participants understanding why the Application ID mattered.
+- **Autosave with visible status.** The form shows *Changes save automatically*, then *Saving…* and *Saved [time]* as you type, plus a manual Save button. *Addresses:* the original's 20-minute timeout warning buried at the bottom of the landing page.
+- **Review before submitting.** A **Review and submit** page summarizes every answer with an **Edit** button per section, and **Submit application** stays disabled until the applicant ticks the certification box.
+- **A clear confirmation and next steps.** After submitting, applicants see their confirmation number, a numbered **What happens next** list (print the confirmation, pay the fee, schedule the interview) and a **Print confirmation** button.
+- **Real language switching.** The header language menu translates the entire site, not just tooltips. English and Spanish are complete; Chinese, Hindi, Arabic, Portuguese, French, Vietnamese and Korean are listed but greyed out as planned. *Addresses:* the original's tooltip-only translation (finding 8).
+- **Full-width, readable layout.** Content uses the whole screen with larger type, a consistent header (with **Help & FAQs** always visible) and a consistent footer. On smaller laptop screens the whole page scales down proportionally, and phones and tablets get stacked layouts. *Addresses:* the half-empty screen and small text; 6/10 respondents unable to read all the text easily; 9/10 finding the original unattractive.
 
 ### Interface Walkthrough
 
-[For each screen: a screenshot, then 2–4 sentences on what the user can do there and which controls they use.]
+The prototype is live at [maya2234.github.io/EasyVisa](https://maya2234.github.io/EasyVisa/). It is fully clickable from start to confirmation. Sample answers are pre-filled so the flow can be tested quickly, and nothing typed is stored or sent anywhere.
 
-1. **Landing page** – [screenshot] [description]
-2. **[Next page]** – [screenshot] [description]
-3. **[Next page]** – [screenshot] [description]
+**1. Landing page**
+
+![Top of the home screen](site_images/01-home-top.png)
+![Bottom of the home screen](site_images/02-home-bottom.png)
+
+The page opens with the title and a one-line description, then the **Before you begin** checklist. Below it are two cards: **Start a new application** with a solid **Start an application** button, and **Already started?** with an outlined **Retrieve an application** button and a short "Have these ready" list. A note at the bottom explains what to do after submitting.
+
+**2. "What to have ready" pop-up**
+
+![Pop-up for documents that happens when you click the ⓘ](site_images/03-documents-popup.png)
+
+Clicking the ⓘ next to *Gather your information* opens a pop-up listing the documents every applicant needs, plus extra requirements for students and exchange visitors, petition-based workers and other temporary workers. Close it with ✕, the Escape key, or by clicking outside it.
+
+**3. Review the terms**
+
+![Top of the terms for computer fraud](site_images/04-review-terms-top.png)
+![Bottom of the terms for computer fraud](site_images/05-review-terms-bottom.png)
+
+The legal notice scrolls inside its own card. Ticking **I agree to the terms** unlocks the → button; ← and the **Back** link return to the landing page. The **What happens next?** panel on the right explains the next screen and links to the DS-160 instructions.
+
+**4. Start a new application**
+
+![What the page to start an application looks like blank](site_images/06-start-application-blank.png)
+![What the page to start an application looks like filled](site_images/07-start-application-filled.png)
+
+Choose an embassy or consulate from the dropdown (the prototype lists eight sample locations), then click **Verify you are human**. The → button activates once both are done and opens the form with a newly generated Application ID. **Returning applicant?** shows an inline message offering to switch to the Retrieve page or stay.
+
+**5. Retrieve an application**
+
+![What the page to retrieve an application looks like blank](site_images/08-retrieve-blank.png)
+![What the page to retrieve an application looks like filled](site_images/09-retrieve-filled.png)
+
+Type a 10-character Application ID. The box formats it as you type, counts characters and searches automatically. For the demo, click the sample ID **AA00EV2026** shown under the box. Once the application is found, a green confirmation appears with three identity fields (first five letters of surname, year of birth, security answer), pre-filled for the demo. → then opens the saved application. Any other ID shows a clear "We couldn't find application …" message with a link to start a new application instead.
+
+**6. Your application**
+
+![The page to fill out an application](site_images/10-application-form.png)
+
+The form is split into four cards: **Personal information**, **Passport**, **Travel plans** and **Contact details**. The side panel shows the Application ID with a reminder to write it down, a **Sections** list that jumps to each card, and the chosen embassy under **Applying at**. Edits trigger the autosave indicator next to the Save button. **Continue to review** moves on.
+
+**7. Review and submit**
+
+![The page to review and submit your application](site_images/11-review-submit.png)
+
+Every answer is listed by section, each with an **Edit** button that returns to the form. The **Sign and submit** card repeats the Application ID and location, and **Submit application** activates only after the certification box is ticked.
+
+**8. Confirmation**
+
+![The page to confirm your application](site_images/12-confirmation.png)
+
+The confirmation shows the confirmation number, applicant name, submission date and location, followed by the three next steps. **Print confirmation** opens the browser's print dialog, and **Return to home** goes back to the start.
+
+**Language switching**
+
+![The home page in spanish](site_images/13-spanish.png)
+
+Choosing **Español** in the header menu instantly translates every screen, including the pop-up, alerts and form labels.
 
 ## Implementation
 
-The prototype is a front-end-only web application built with **Svelte / SvelteKit** and JavaScript, with no backend or database; form data is not submitted anywhere.
+EasyVisa is a front-end-only single-page app built with **Svelte 5** and **Vite 6**, with no backend or database. Data lives in memory for the length of the visit, and refreshing the page starts over at the landing page.
 
-- **Design tools:** Figma (wireframes and layout)
-- **Framework:** [Svelte or SvelteKit + version]
-- **Libraries:** [ADD any UI or styling libraries]
-- **Code structure:** [ADD a short description, e.g. `src/routes/` holds one route per page; shared components such as the header and buttons live in `src/lib/components/`]
-- **Hosting:** [ADD platform, e.g. GitHub Pages / Vercel / Netlify] at [ADD LINK]
-- **Source code:** [ADD GITHUB LINK]
+- **Design tools:** Figma for the wireframes and layout.
+- **Framework and build:** Svelte 5 (using runes such as `$state`, `$derived` and `$props`) with Vite 6 and `@sveltejs/vite-plugin-svelte`. We used plain Svelte rather than SvelteKit, because the prototype is one page that swaps screens.
+- **Libraries:** [Lucide](https://lucide.dev) icons via `@lucide/svelte`. All styling is hand-written CSS: shared styles in `src/app.css`, and scoped styles inside each component.
+- **Code structure** (`src/`):
+  - `main.js` mounts the app and scales the page to fit smaller laptop screens, keeping the 1440 × 800 proportions the design was built for.
+  - `App.svelte` holds a single `page` state and shows one screen at a time, using a `goTo()` function passed to each page instead of a router.
+  - `Header.svelte` and `Footer.svelte` are shared on every screen. The header contains the language menu and the Help & FAQs link.
+  - There is one component per screen: `HomePage`, `TermsPage`, `StartApplicationPage`, `RetrieveApplicationPage`, `ApplicationFormPage` and `SubmitPage`.
+  - `application.svelte.js` is the shared application state (ID, embassy, answers, save and submit times). It generates realistic Application IDs (`AA00` plus six characters) and pre-fills sample answers so the flow can be clicked through.
+  - `i18n.svelte.js` stores every piece of on-screen text in English and Spanish. Components call `t('key')`, and changing the language updates every page immediately.
+- **Hosting:** GitHub Pages at [maya2234.github.io/EasyVisa](https://maya2234.github.io/EasyVisa/). A GitHub Actions workflow (`.github/workflows/deploy.yml`) builds the site and publishes it on every push to `main`, and Vite's `base: '/EasyVisa/'` setting makes the paths work under the repository's sub-folder.
+- **Source code:** [github.com/Maya2234/EasyVisa](https://github.com/Maya2234/EasyVisa)
+- **Run locally:** `npm install`, then `npm run dev`.
 
 ## Use of AI
 
@@ -227,16 +297,16 @@ AI was used to assist in parts of the wireframe construction and to help us beco
 
 ## Future Work
 
-No project is ever fully done. Based on our research, these are the next steps we would take:
+No project is ever fully done. Based on our research and what we built, these are the next steps we would take:
 
-- **Finish the Application Information page.** The Figma frame for the Application ID and security question page is still a placeholder copy of the terms layout. The next step is to give the Application ID its own prominent, impossible-to-miss treatment, with a clear explanation of what it's for and a one-click way to save or print it.
-- **Redesign the rest of the DS-160 flow.** Our prototype focuses on the entry experience until you reach the actual application page. While the application itself looks slightly better, it still could use a redesign as it only takes up half the page.
-- **Rethink the CAPTCHA step.** Every study participant failed it at least once. A clearer required-field indicator, inline validation, or a less error-prone verification method would remove one of the most common errors we observed.
-- **Full language support.** The current site only translates hover tooltips. Since many DS-160 applicants are non-native English speakers, a true page-level language option would be a meaningful improvement.
+- **Test the redesign with users.** Run the same three tasks and the same survey with new participants on EasyVisa, and compare errors, time on task and self-reported scores against the original site.
+- **Build out the full DS-160.** Our form covers four core sections as a demonstration. The real DS-160 has many more (family, work and education history, security questions), and they would need the same card layout, autosave and review treatment.
+- **A searchable location picker.** The prototype lists eight sample embassies in a standard dropdown. The real list has hundreds, so the next step is a type-to-search field with country and city matching, building on Participant 1's one positive comment about the original.
+- **More languages.** English and Spanish are complete. The other seven languages in the menu are placeholders, and real translations, including right-to-left layout for Arabic, are needed.
+- **Real verification and saving.** The "Verify you are human" box and the Application ID lookup are simulated. A working version would connect to a real bot check and a backend that stores applications for the 30-day window.
+- **Validation and accessibility.** Add inline error messages on form fields, and test the site with screen readers and keyboard-only navigation.
 - **Clearer connections to related sites.** Better signposting between the DS-160, travel.state.gov and the separate interview-scheduling portal, so users always know which site they're on and what it's for.
-- **Evaluate the redesign.** Run the same three tasks and the same survey with new participants on EasyVisa and compare errors, completion and self-reported scores against the original site.
 
 ## Demo Video
+[EasyVisa Demo Video](https://mailuc-my.sharepoint.com/:v:/g/personal/brogeeld_mail_uc_edu/IQCtfN_dRLRbS7W8ME3y0eP8AQnG3Jh6cO9eTMZdWGQp_hg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=gTPBDp)
 
-[EMBED OR LINK 2–3 MINUTE DEMO VIDEO — include project name, team members, project components and a walkthrough of the interface]
-[EMBED OR LINK 2–3 MINUTE DEMO VIDEO — include project name, team members, project components and a walkthrough of the interface]

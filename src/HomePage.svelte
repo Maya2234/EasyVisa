@@ -11,9 +11,19 @@
   import UserRound from '@lucide/svelte/icons/user-round';
   import Calendar from '@lucide/svelte/icons/calendar';
   import ShieldQuestion from '@lucide/svelte/icons/shield-question-mark';
+  import Info from '@lucide/svelte/icons/info';
+  import X from '@lucide/svelte/icons/x';
 
   // goTo lets this page switch to another screen
   let { goTo } = $props();
+
+  // The "What to have ready" popup. A <dialog> closes itself with Escape.
+  let documentsDialog;
+
+  // Clicking the dark area outside the popup also closes it
+  function closeIfOutside(event) {
+    if (event.target === documentsDialog) documentsDialog.close();
+  }
 </script>
 
 <div class="container page">
@@ -25,7 +35,7 @@
   <section class="before">
     <div class="before-heading">
       <h2>{t('home.beforeTitle')}</h2>
-      <a class="resource-link" href="https://ceac.state.gov/genniv/" target="_blank">
+      <a class="resource-link" href="https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/forms/ds-160-online-nonimmigrant-visa-application/ds-160-faqs.html" target="_blank">
         {t('home.fullInstructions')}
         <ArrowUpRight size={16} />
       </a>
@@ -36,6 +46,9 @@
         <div class="item-heading">
           <NotebookTabs size={20} />
           <h3>{t('home.gatherTitle')}</h3>
+          <button class="info-button" onclick={() => documentsDialog.showModal()} aria-label={t('home.gatherInfoLabel')}>
+            <Info size={20} />
+          </button>
         </div>
         <p>{t('home.gatherText')}</p>
       </div>
@@ -44,7 +57,9 @@
           <SquareUserRound size={20} />
           <h3>{t('home.photoTitle')}</h3>
         </div>
-        <p>{t('home.photoText')}</p>
+        <p>
+          <a href="https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/photos.html" target="_blank">{t('home.photoLink')} <span class="no-wrap">{t('home.photoLinkEnd')}<span class="link-arrow"><ArrowUpRight size={14} /></span></span></a>{t('home.photoText')}
+        </p>
       </div>
       <div class="checklist-item">
         <div class="item-heading">
@@ -88,6 +103,34 @@
       </button>
     </section>
   </div>
+
+  <!-- Popup opened by the (i) button next to "Gather your information" -->
+  <dialog class="documents-dialog" bind:this={documentsDialog} onclick={closeIfOutside} aria-labelledby="documents-title">
+    <div class="dialog-content">
+      <div class="dialog-header">
+        <h2 id="documents-title">{t('docs.title')}</h2>
+        <button class="close-button" onclick={() => documentsDialog.close()} aria-label={t('docs.close')}>
+          <X size={22} />
+        </button>
+      </div>
+
+      <p>{t('docs.intro')}</p>
+      <ul>
+        <li>{t('docs.passport')}</li>
+        <li>{t('docs.itinerary')}</li>
+        <li>{t('docs.trips')}</li>
+        <li>{t('docs.resume')}</li>
+        <li>{t('docs.other')}</li>
+      </ul>
+
+      <p>{t('docs.extraIntro')}</p>
+      <ul>
+        <li><strong>{t('docs.studentsLabel')}</strong> {t('docs.studentsText')}</li>
+        <li><strong>{t('docs.petitionLabel')}</strong> {t('docs.petitionText')}</li>
+        <li><strong>{t('docs.workersLabel')}</strong> {t('docs.workersText')}</li>
+      </ul>
+    </div>
+  </dialog>
 
   <!-- What happens after you submit -->
   <div class="after-submit">
@@ -240,6 +283,75 @@
     color: var(--blue);
   }
 
+  /* The small (i) button next to "Gather your information" */
+  .info-button {
+    display: flex;
+    padding: 2px;
+    background: none;
+    border: none;
+    border-radius: 50%;
+    color: var(--blue);
+  }
+
+  .info-button:hover {
+    background: var(--tint);
+  }
+
+  /* The popup: centered, scrolls if the text is taller than the screen */
+  .documents-dialog {
+    width: min(640px, calc(100% - 32px));
+    max-height: 85vh;
+    padding: 0;
+    border: none;
+    border-top: 4px solid var(--blue);
+    color: var(--text);
+  }
+
+  .documents-dialog::backdrop {
+    background: rgba(10, 49, 78, 0.5);
+  }
+
+  .dialog-content {
+    padding: 28px;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .dialog-header {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .dialog-header h2 {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--heading);
+  }
+
+  .close-button {
+    display: flex;
+    padding: 4px;
+    background: none;
+    border: none;
+    color: var(--text-dark);
+  }
+
+  .dialog-content ul {
+    margin: 10px 0 20px;
+    padding-inline-start: 22px;
+  }
+
+  .dialog-content li + li {
+    margin-top: 8px;
+  }
+
+  .dialog-content strong {
+    color: var(--text-dark);
+  }
+
   .checklist-item h3 {
     font-size: 16px;
     font-weight: 600;
@@ -250,6 +362,18 @@
   .checklist-item p {
     font-size: 13.5px;
     line-height: 1.55;
+  }
+
+  /* Keeps the last word and the arrow together on one line */
+  .no-wrap {
+    white-space: nowrap;
+  }
+
+  /* Small arrow after a link in a sentence, so it reads as a link */
+  .link-arrow {
+    display: inline-block;
+    margin-inline-start: 4px;
+    vertical-align: -2px;
   }
 
   /* The icon uses the blue; the text below sets its own colors */
