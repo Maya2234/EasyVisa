@@ -4,7 +4,7 @@
 
 Original site: [ceac.state.gov/GenNIV/Default.aspx](https://ceac.state.gov/GenNIV/Default.aspx)
 
-**Live prototype:** [maya2234.github.io/EasyVisa](https://maya2234.github.io/EasyVisa/) · **Source code:** [github.com/Maya2234/EasyVisa](https://github.com/Maya2234/EasyVisa) · **Demo video:** [ADD VIDEO LINK]
+**Live prototype:** [maya2234.github.io/EasyVisa](https://maya2234.github.io/EasyVisa/) · **Source code:** [github.com/Maya2234/EasyVisa](https://github.com/Maya2234/EasyVisa) · **Demo video:** [EasyVisa Demo Video](https://mailuc-my.sharepoint.com/:v:/g/personal/brogeeld_mail_uc_edu/IQCtfN_dRLRbS7W8ME3y0eP8AQnG3Jh6cO9eTMZdWGQp_hg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=gTPBDp)
 
 ## Team
 
@@ -308,6 +308,5 @@ No project is ever fully done. Based on our research and what we built, these ar
 - **Clearer connections to related sites.** Better signposting between the DS-160, travel.state.gov and the separate interview-scheduling portal, so users always know which site they're on and what it's for.
 
 ## Demo Video
-
-[EMBED OR LINK 2–3 MINUTE DEMO VIDEO — include project name, team members, project components and a walkthrough of the interface]
+[EasyVisa Demo Video](https://mailuc-my.sharepoint.com/:v:/g/personal/brogeeld_mail_uc_edu/IQCtfN_dRLRbS7W8ME3y0eP8AQnG3Jh6cO9eTMZdWGQp_hg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=gTPBDp)
 
